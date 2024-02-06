@@ -11,7 +11,7 @@ def tri_selection(T):
         for j in range(i+1,nb):
             if T[j] < T[min]:
                 min = j
-        swap(T[i],T[min])
+        swap(i,min)
         print(T)
     return (T)
 
