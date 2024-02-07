@@ -1,3 +1,4 @@
+from math import radians, sin, cos, atan2, sqrt
 from tkinter import *
 from tkinter import filedialog
 import csv
@@ -112,8 +113,17 @@ def sort():
 
 
 def insertsort(listVille):
-    print("implement me !")
+    for i in range(0, len(listVille)):
+        en_cour = listVille[i]
+        j = i
+        while j > 0 and listVille[j - 1].distanceFromGrenoble > en_cour.distanceFromGrenoble:
+            listVille[j] = listVille[j - 1]
+            j = j - 1
+
+        listVille[j] =  en_cour
+
     return listVille
+
 
 
 def selectionsort(listVille):
