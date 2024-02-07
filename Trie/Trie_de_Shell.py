@@ -6,7 +6,7 @@ def shell_sort(list):
     e = 0
     while e < longueur:
         e = (3 * e + 1)
-        espacements.append(e)
+        espacements.insert(0,e)
 
     for e in espacements:
         for i in range(longueur):
