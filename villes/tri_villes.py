@@ -127,17 +127,59 @@ def insertsort(listVille):
 
 
 def selectionsort(listVille):
-    print("implement me !")
+    def swap(idxi, idxj):
+        temp = listVille[idxi]
+        listVille[idxi] = listVille[idxj]
+        listVille[idxj] = temp
+
+    nb = len(listVille)
+    for i in range(0, nb):
+        min = i
+        for j in range(i + 1, nb):
+            if listVille[j].distanceFromGrenoble < listVille[min].distanceFromGrenoble:
+                min = j
+        swap(i, min)
+
+    return (listVille)
+
     return listVille
 
+def swap(idxi, idxj):
+    temp = listVille[idxi]
+    listVille[idxi] = listVille[idxj]
+    listVille[idxj] = temp
 
 def bubblesort(listVille):
-    print("implement me !")
+    passage = 0
+    permutation = True
+    while permutation == True:
+        permutation = False
+        for i in range(0, len(listVille) - 1):
+            if listVille[i].distanceFromGrenoble > listVille[i + 1].distanceFromGrenoble:
+                permutation = True
+                listVille[i], listVille[i + 1] = listVille[i + 1], listVille[i]
+        passage = passage + 1
     return listVille
+
 
 
 def shellsort(listVille):
-    print("implement me !")
+    espacements = []
+    longueur = len(listVille)
+    e = 0
+    while e < longueur:
+        e = (3 * e + 1)
+        espacements.insert(0, e)
+
+    for e in espacements:
+        for i in range(longueur):
+            valeur = listVille[i]
+            j = i
+            while j > e - 1 and listVille[j - e].distanceFromGrenoble > valeur.distanceFromGrenoble:
+                listVille[j] = listVille[j - e]
+                j = j - e
+            listVille[j] = valeur
+
     return listVille
 
 
