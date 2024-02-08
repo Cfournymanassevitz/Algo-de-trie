@@ -2,6 +2,7 @@ from math import radians, sin, cos, atan2, sqrt
 from tkinter import *
 from tkinter import filedialog
 import csv
+import time
 
 class Ville :
     def __init__(self, nom_commune, codes_postaux, latitude, longitude, dist, distanceFromGrenoble):
@@ -154,11 +155,11 @@ def bubblesort(listVille):
     permutation = True
     while permutation == True:
         permutation = False
-        for i in range(0, len(listVille) - 1):
+        passage = passage + 1
+        for i in range(0, len(listVille) - passage):
             if listVille[i].distanceFromGrenoble > listVille[i + 1].distanceFromGrenoble:
                 permutation = True
                 listVille[i], listVille[i + 1] = listVille[i + 1], listVille[i]
-        passage = passage + 1
     return listVille
 
 
@@ -194,8 +195,18 @@ def heapsort(listVille):
 
 
 def quicksort(listVille):
-    print("implement me !")
+    if not listVille:
+        return []
+    else:
+        pivot = listVille[-1]
+        plus_petit = [x for x in listVille if x.distanceFromGrenoble < pivot.distanceFromGrenoble]
+        plus_grand = [x for x in listVille[:-1] if x.distanceFromGrenoble >= pivot.distanceFromGrenoble]
+        return quicksort(plus_petit) + [pivot] + quicksort(plus_grand)
+
+    print(quicksort(listVille))
     return listVille
+
+
 
 
 # Creation de la fenêtre
