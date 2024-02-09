@@ -12,14 +12,21 @@ def fusion(gauche, droite):
         else:
             resultat.append(droite[index_droite])
             index_droite += 1
+    if gauche:
+        resultat.extend(gauche[index_gauche:])
+    if droite:
+        resultat.extend(droite[index_droite:])
+    return resultat
 
-    return resultat + [gauche[index_gauche]] + [droite[index_droite]]
 
-
-def tri_fusion(tableau):
-    if len(tableau) <= 1:
-        return tableau
-    milieu = len(tableau) // 2
-    return fusion( tri_fusion(tableau[:milieu]), tri_fusion(tableau[milieu:]))
+def tri_fusion(m):
+    if len(m) <= 1:
+        return m
+    milieu = len(m) // 2
+    gauche = m[:milieu]
+    droite = m[milieu:]
+    gauche = tri_fusion(gauche)
+    droite = tri_fusion(droite)
+    return list(fusion(gauche, droite))
 
 print(tri_fusion(tableau))
