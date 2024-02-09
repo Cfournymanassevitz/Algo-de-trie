@@ -1,4 +1,4 @@
-tableau = [3, 5, 0, 4, 5, 8, 7, 2, 6, 1]
+tableau = [3, 5, 0, 4, 5, 8, 7, 2, 6, 1,25,65,111,7]
 print(tableau)
 plus_petit = 0
 plus_grand = 0
@@ -17,23 +17,23 @@ def tri_rapide(tableau):
 # print(tri_rapide(tableau))
 
 
-def tri_rapide2(tableau, plus_petit, plus_grand):
-    if plus_petit < plus_grand :
-        pi = partitionner(tableau, plus_petit,plus_grand)
-        tri_rapide2(tableau, plus_petit, pi-1)
-        tri_rapide2(tableau, pi+1, plus_grand)
+def tri_rapide2(tableau, index_min, index_max):
+    if index_min < index_max :
+        pi = partitionner(tableau, index_min,index_max)
+        tri_rapide2(tableau, index_min, pi-1)
+        tri_rapide2(tableau, pi+1, index_max)
         return tableau
 
 
-def partitionner(tableau, plus_petit, plus_grand):
-    pivot = tableau[plus_grand]
-    j = plus_petit-1
-    for i in range(plus_petit, plus_grand):
+def partitionner(tableau, index_min,index_max):
+    pivot = tableau[index_max]
+    j = index_min-1
+    for i in range(index_min, index_max):
         if tableau[i] <= pivot:
             j= j+1
             tableau[j], tableau[i] = tableau[i], tableau[j]
 
-    tableau[j+1], tableau[plus_grand] = tableau[plus_grand], tableau[j+1]
+    tableau[j+1], tableau[index_max] = tableau[index_max], tableau[j+1]
     return j+1
 
 
