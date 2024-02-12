@@ -5,8 +5,8 @@ print(tableau)
 def fusion(gauche, droite):
     resultat = []
     index_gauche, index_droite = 0, 0
-    while index_gauche != len(gauche)-1 and index_droite != len(droite)-1:
-        if gauche[index_gauche] < droite[index_droite]:
+    while index_gauche < len(gauche) and index_droite <  len(droite):
+        if gauche[index_gauche] <= droite[index_droite]:
             resultat.append(gauche[index_gauche])
             index_gauche += 1
         else:
